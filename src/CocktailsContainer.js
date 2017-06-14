@@ -26,15 +26,18 @@ export default class CocktailsContainer extends Component {
 
   render() {
     return (
-      <div>
-        <Route
-          exact path='/cocktails/:id'
-          render={props => {
-            const cocktail = this.getCocktail(props.match.params.id)
-            return <CocktailPage cocktail={cocktail}/>
-          }}
-        />
-        <CocktailList cocktails={this.state.cocktails}/>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-8">
+            <Route exact path='/cocktails/:id' render={props => {
+                const cocktail = this.getCocktail(props.match.params.id)
+                return <CocktailPage cocktail={cocktail}/>
+              }}/>
+          </div>
+          <div className="col-sm-4">
+            <CocktailList cocktails={this.state.cocktails}/>
+          </div>
+        </div>
       </div>
     )
   }
